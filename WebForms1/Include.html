@@ -1,0 +1,25 @@
+﻿<h1>from include file</h1>
+
+<header>
+    <script src="Scripts/jquery-1.8.2.js"></script>
+    <script>
+        $(document).ready(function() {
+            //alert("ready!!!");
+            $(".ao").click(addOrderRow);
+        });
+
+        function addOrderRow(){
+            //alert("hello");
+            //$(this).append("modified");
+            ////rowSelected = $(this).closest('tr');
+            rowSelected = $(this).parent();
+            //rowSelected.hide();
+            if ($(rowSelected).attr("ordersAdded") != "true") {
+                $("<tr><td>1</td></tr>").insertAfter(rowSelected);
+                $(rowSelected).attr("ordersAdded", "true");
+
+
+            }
+        }
+    </script>
+</header>
