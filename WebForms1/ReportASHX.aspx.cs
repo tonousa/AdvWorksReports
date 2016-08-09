@@ -14,11 +14,12 @@ namespace WebForms1
             // add script, style
             Response.WriteFile("Include.html");
 
-            ////SqlDataReader reader = null;
-            string connString = @"Data Source=MARK-PC\SQLEXPRESS;" +
-                "Initial Catalog=AdventureWorks2008R2; Integrated Security=True";
+            //string connString = @"Data Source=MARK-PC\SQLEXPRESS;" +
+            //    "Initial Catalog=AdventureWorks2008R2; Integrated Security=True";
             //string connString = @"Data Source=staging01;" +
             //    "Initial Catalog=AdventureWorks2008; Integrated Security=True";
+            string connString =
+                System.Configuration.ConfigurationManager.ConnectionStrings["AdventureWorks2008"].ConnectionString;
 
             string customerQry = "SELECT Sales.Customer.CustomerID, Sales.Customer.StoreID FROM Sales.Customer WHERE Sales.Customer.CustomerID < 12000 ORDER BY Sales.Customer.CustomerID";
             string orderQry = "SELECT Sales.SalesOrderHeader.SalesOrderID, Sales.SalesOrderHeader.CustomerID, OrderDate FROM Sales.SalesOrderHeader INNER JOIN Sales.Customer ON Sales.SalesOrderHeader.CustomerID = Sales.Customer.CustomerID WHERE Sales.Customer.CustomerID < 12000";
@@ -86,14 +87,14 @@ namespace WebForms1
             bool hasOrders = (orderRows.Length > 0);
 
             StringBuilder customerString = new StringBuilder();
-            customerString.Append("<tr>");
+            customerString.Append("<tr id='" + row["CustomerID"] + "'>");
             customerString.Append("<td>Customer: </td>");
             customerString.Append("<td>" + row["CustomerID"] + "</td>");
             customerString.Append("<td>");
             customerString.Append(
                 DBNull.Value.Equals(row["StoreID"]) ? "null" : row["StoreID"]);
             customerString.Append("</td>");
-            customerString.Append("<td class='ao'>" + (hasOrders? "++ orders" : "") + "</td>");
+            customerString.Append("<td class='aoCol'>" + (hasOrders? "+ orders" : "") + "</td>");
             customerString.Append("</tr>");
             Response.Write(customerString.ToString());
             //if (hasOrders) { OrderRowPrint(ref orderRows); }

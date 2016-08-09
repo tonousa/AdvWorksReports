@@ -5,21 +5,46 @@
     <script>
         $(document).ready(function() {
             //alert("ready!!!");
-            $(".ao").click(addOrderRow);
+            $(".aoCol").click(addOrderRow);
         });
 
         function addOrderRow(){
             //alert("hello");
             //$(this).append("modified");
             ////rowSelected = $(this).closest('tr');
+            colSelected = this;
             rowSelected = $(this).parent();
-            //rowSelected.hide();
-            if ($(rowSelected).attr("ordersAdded") != "true") {
-                $("<tr><td>1</td></tr>").insertAfter(rowSelected);
-                $(rowSelected).attr("ordersAdded", "true");
+            custID = $(rowSelected).attr("id");
 
+            //alert(colSelected.innerText);
 
+            
+            if (colSelected.innerText == "+ orders") {
+                // Expand
+                if ($(rowSelected).attr("ordersAdded") != "true") {
+                    // Get Order row data, insert row
+                    ////$("<tr><td>1</td></tr>").insertAfter(rowSelected);
+                    $.get("GetOrders.ashx?custID=" + custID, function (data) {
+                                $(data).insertAfter(rowSelected);
+                        });
+
+                    colSelected.innerText = "- orders";
+                    $(rowSelected).attr("ordersAdded", "true");
+                }
+                else {
+                    // row data already fetched, just show it
+                    orderRow = $(rowSelected).next('tr');
+                    orderRow.show();
+                    colSelected.innerText = "- orders"
+                }
             }
+            else if (colSelected.innerText == "- orders") {
+                // Collapse
+                orderRow = $(rowSelected).next('tr');
+                orderRow.hide();
+                colSelected.innerText = "+ orders"
+            }
+            
         }
     </script>
 </header>
