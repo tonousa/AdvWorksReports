@@ -31,7 +31,7 @@ namespace WebForms1
                 {
                     sb.Append("<tr><td>" + reader["SalesOrderID"] + "</td></tr>");
                 }
-                sb.Append("</table></tr></td>");
+                sb.Append("</table></td></tr>");
             }
 
             //context.Response.Write("<tr><td>" + custID + "</td></tr>");
