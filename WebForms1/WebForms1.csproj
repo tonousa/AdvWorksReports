@@ -112,6 +112,35 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\images\black-asc.gif" />
+    <Content Include="css\images\black-desc.gif" />
+    <Content Include="css\images\black-unsorted.gif" />
+    <Content Include="css\images\bootstrap-black-unsorted.png" />
+    <Content Include="css\images\bootstrap-white-unsorted.png" />
+    <Content Include="css\images\dragtable-handle.png" />
+    <Content Include="css\images\dragtable-handle.svg" />
+    <Content Include="css\images\dropbox-asc-hovered.png" />
+    <Content Include="css\images\dropbox-asc.png" />
+    <Content Include="css\images\dropbox-desc-hovered.png" />
+    <Content Include="css\images\dropbox-desc.png" />
+    <Content Include="css\images\green-asc.gif" />
+    <Content Include="css\images\green-desc.gif" />
+    <Content Include="css\images\green-header.gif" />
+    <Content Include="css\images\green-unsorted.gif" />
+    <Content Include="css\images\ice-asc.gif" />
+    <Content Include="css\images\ice-desc.gif" />
+    <Content Include="css\images\ice-unsorted.gif" />
+    <Content Include="css\images\metro-black-asc.png" />
+    <Content Include="css\images\metro-black-desc.png" />
+    <Content Include="css\images\metro-loading.gif" />
+    <Content Include="css\images\metro-unsorted.png" />
+    <Content Include="css\images\metro-white-asc.png" />
+    <Content Include="css\images\metro-white-desc.png" />
+    <Content Include="css\images\white-asc.gif" />
+    <Content Include="css\images\white-desc.gif" />
+    <Content Include="css\images\white-unsorted.gif" />
+    <Content Include="css\theme.blue.css" />
+    <Content Include="css\theme.default.css" />
     <Content Include="HtmlPage2.html" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
