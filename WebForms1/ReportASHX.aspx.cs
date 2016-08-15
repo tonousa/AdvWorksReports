@@ -69,7 +69,8 @@ namespace WebForms1
 
         void CustomersPrint(ref DataSet dataset)
         {
-            Response.Write("<table rules='all'>");
+            Response.Write("<table class='mainTable' rules='all'>");
+            Response.Write("<thead><tr><th>ID</th><th>col2</th><th>ID</th><th>col2</th></tr></thead>");
             foreach (DataRow CustomerRow in dataset.Tables["Customer"].Rows)
             {
                 //Response.Write("<table rules='all'>");

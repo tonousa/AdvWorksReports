@@ -112,6 +112,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="HtmlPage2.html" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
     <Content Include="Images\heroAccent.png" />
@@ -130,6 +131,7 @@
     <Content Include="GetOrders.ashx" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Include.html" />
+    <Content Include="pps.html" />
     <Content Include="Report2.aspx" />
     <Content Include="Report.aspx" />
     <Content Include="ReportASHX.aspx" />
@@ -138,6 +140,8 @@
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
+    <Content Include="Scripts\jquery.metadata.js" />
+    <Content Include="Scripts\jquery.tablesorter.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />

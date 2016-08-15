@@ -1,11 +1,11 @@
-﻿<h1>from include file</h1>
-
-<header>
+﻿<head>
     <script src="Scripts/jquery-1.8.2.js"></script>
+    <script src="Scripts/jquery.tablesorter.js"></script>
     <script>
         $(document).ready(function() {
             //alert("ready!!!");
             $(".aoCol").click(addOrderRow);
+            $(".mainTable").tablesorter();
         });
 
         function addOrderRow(){
@@ -18,7 +18,7 @@
 
             //alert(colSelected.innerText);
 
-            
+
             if (colSelected.innerText == "+ orders") {
                 // Expand
                 if ($(rowSelected).attr("ordersAdded") != "true") {
@@ -44,7 +44,10 @@
                 orderRow.hide();
                 colSelected.innerText = "+ orders"
             }
-            
+
         }
     </script>
-</header>
+</head>
+
+<h1>from include file</h1>
+
