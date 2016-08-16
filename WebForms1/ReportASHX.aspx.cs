@@ -98,14 +98,17 @@ namespace WebForms1
             customerString.Append("<td class='aoCol'>" + (hasOrders? "+ orders" : "") + "</td>");
             customerString.Append("</tr>");
             Response.Write(customerString.ToString());
-            //if (hasOrders) { OrderRowPrint(ref orderRows); }
+            ////if (hasOrders) { OrderRowPrint(ref orderRows); }
             //if (hasOrders) { OrderRowPrint(ref orderRows); }
         }
 
         void OrderRowPrint(ref DataRow[] orderRows)
         {
+            StringBuilder x = Procedures.myFunction(ref orderRows);
+            Response.Write(x.ToString());
+            return;
 
-            Response.Write("<td colspan='4'><table rules='all'>");
+            Response.Write("<tr><td colspan='4'><table rules='all'>");
             foreach (DataRow orderRow in orderRows)
             {
                 StringBuilder orderString = new StringBuilder();
@@ -118,7 +121,7 @@ namespace WebForms1
 
                 Response.Write(orderString.ToString());
             }
-            Response.Write("</table></td>");
+            Response.Write("</table></td></tr>");
         }
     }
 }

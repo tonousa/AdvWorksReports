@@ -22,10 +22,21 @@ namespace WebForms1
             SqlConnection conn = new SqlConnection(connString);
             SqlCommand cmd = new SqlCommand(query, conn);
 
+            // ----
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+            DataRow[] orderRows = dt.Select();
+            StringBuilder x = Procedures.myFunction(ref orderRows);
+            context.Response.Write(x.ToString());
+            return;
+            // ----
+
             using (conn)
             {
                 conn.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
+                //SqlDataReader reader = cmd.ExecuteReader();
                 sb.Append("<tr><td><table>");
                 while (reader.Read())
                 {
