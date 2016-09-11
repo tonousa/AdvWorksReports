@@ -22,7 +22,7 @@ namespace WebForms1
                 System.Configuration.ConfigurationManager.ConnectionStrings["AdventureWorks2008"].ConnectionString;
 
             string customerQry = "SELECT Sales.Customer.CustomerID, Sales.Customer.StoreID FROM Sales.Customer WHERE Sales.Customer.CustomerID < 12000 ORDER BY Sales.Customer.CustomerID";
-            string orderQry = "SELECT Sales.SalesOrderHeader.SalesOrderID, Sales.SalesOrderHeader.CustomerID, OrderDate FROM Sales.SalesOrderHeader INNER JOIN Sales.Customer ON Sales.SalesOrderHeader.CustomerID = Sales.Customer.CustomerID WHERE Sales.Customer.CustomerID < 12000";
+            string orderQry = "SELECT Sales.SalesOrderHeader.SalesOrderID, Sales.SalesOrderHeader.CustomerID, OrderDate FROM Sales.SalesOrderHeader INNER JOIN Sales.Customer ON Sales.SalesOrderHeader.CustomerID = Sales.Customer.CustomerID WHERE Sales.Customer.CustomerID < 62000";
             string orderDetailQry = "SELECT Sales.SalesOrderDetail.ProductID, Sales.SalesOrderDetail.SalesOrderID, UnitPrice FROM Sales.SalesOrderDetail INNER JOIN Sales.SalesOrderHeader ON Sales.SalesOrderDetail.SalesOrderID = Sales.SalesOrderHeader.SalesOrderID INNER JOIN Sales.Customer ON Sales.SalesOrderHeader.CustomerID = Sales.Customer.CustomerID WHERE Sales.Customer.CustomerID < 12000";
 
             DataSet dataset = new DataSet();
@@ -51,7 +51,7 @@ namespace WebForms1
 
             DataRelation cust_order = new DataRelation("cust_order",
                 dataset.Tables["Customer"].Columns["CustomerID"],
-                dataset.Tables["Order"].Columns["CustomerID"]);
+                dataset.Tables["Order"].Columns["CustomerID"], false);
             DataRelation order_orderDetail = new DataRelation("order_orderDetail",
                 dataset.Tables["Order"].Columns["SalesOrderID"],
                 dataset.Tables["OrderDetail"].Columns["SalesOrderID"]);
@@ -70,7 +70,7 @@ namespace WebForms1
         void CustomersPrint(ref DataSet dataset)
         {
             Response.Write("<table class='mainTable' rules='all'>");
-            Response.Write("<thead><tr><th>ID</th><th>col2</th><th>ID</th><th>col2</th></tr></thead>");
+            Response.Write("<thead><tr><th>ID</th><th>Customer ID</th><th>Store ID</th><th>Orders</th></tr></thead>");
             foreach (DataRow CustomerRow in dataset.Tables["Customer"].Rows)
             {
                 //Response.Write("<table rules='all'>");
@@ -99,7 +99,7 @@ namespace WebForms1
             customerString.Append("</tr>");
             Response.Write(customerString.ToString());
             ////if (hasOrders) { OrderRowPrint(ref orderRows); }
-            //if (hasOrders) { OrderRowPrint(ref orderRows); }
+            if (hasOrders) { OrderRowPrint(ref orderRows); }
         }
 
         void OrderRowPrint(ref DataRow[] orderRows)
